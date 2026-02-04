@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  web:
+    build: docker/php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./smarty_cache:/var/cache/smarty
+    environment:
+      - MYSQL_HOST=db
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  node:
+    image: node:18-alpine
+    container_name: app_node
+    working_dir: /app
+    volumes:
+      - ./src:/app
+    command: sh -c "if [ ! -d node_modules ]; then npm install; fi && npm run watch"
+
+volumes:
+  db_data:

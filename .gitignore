@@ -1,0 +1,18 @@
+vendor/
+smarty_cache/
+db_data/
+docker-compose.override.yml
+*.log
+.idea/
+
+# Node.js
+node_modules/
+
+# Скомпилированные файлы
+src/public/css/*
+!src/public/css/.gitkeep
+src/public/js/*
+!src/public/js/.gitkeep
+
+# Environment
+.env
