@@ -14,8 +14,7 @@ src/public/css/*
 src/public/js/*
 !src/public/js/.gitkeep
 
-# Package файлф
-src/package.json
+# Package файл
 src/package-lock.json
 
 # Environment
