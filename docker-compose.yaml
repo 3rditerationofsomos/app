@@ -7,7 +7,6 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
-      - ./smarty_cache:/var/cache/smarty
     environment:
       - MYSQL_HOST=db
     depends_on:

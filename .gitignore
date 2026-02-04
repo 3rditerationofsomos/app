@@ -16,6 +16,7 @@ src/public/js/*
 
 # Package файл
 src/package-lock.json
+src/templates_c
 
 # Environment
 .env

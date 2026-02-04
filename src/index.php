@@ -3,7 +3,6 @@ require_once 'vendor/autoload.php';
 
 $smarty = new Smarty();
 $smarty->setTemplateDir('templates/');
-$smarty->setCompileDir(__DIR__ . '/smarty_cache/templates_c/');
 
 $smarty->assign('css_path', '/public/css/main.css');
 $smarty->assign('js_path', '/public/js/main.js');
