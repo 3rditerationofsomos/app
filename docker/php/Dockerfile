@@ -33,9 +33,7 @@ RUN echo "daemon off;" > /etc/nginx/nginx.conf && \
     echo "    }" >> /etc/nginx/nginx.conf && \
     echo "}" >> /etc/nginx/nginx.conf
 
-RUN mkdir -p /var/cache/smarty
-RUN chmod -R 777 /var/cache/smarty
-
 WORKDIR /var/www/html
+RUN chmod -R 777 /var/www/html
 
 CMD ["sh", "-c", "php-fpm -D && nginx"]
