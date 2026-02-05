@@ -1,12 +1,24 @@
 
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- ARTICLE TYPES TABLE
+CREATE TABLE IF NOT EXISTS article_types (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT
 );
 
-INSERT IGNORE INTO users (username, email) VALUES
-('admin', 'admin@example.com'),
-('user1', 'user1@example.com'),
-('john_doe', 'john@example.com');
+-- ARTICLES TABLE
+CREATE TABLE IF NOT EXISTS articles (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    image_link VARCHAR(500),
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    text LONGTEXT,
+    view_count INT UNSIGNED DEFAULT 0,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- RELATIONS TABLE
+CREATE TABLE IF NOT EXISTS relations (
+    article_id INT UNSIGNED,
+    article_type_id INT UNSIGNED
+);

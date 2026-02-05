@@ -15,6 +15,7 @@
     <div style="margin-top: 20px; padding: 10px; border: 1px solid #ddd;">
         <p>Время: {$current_time}</p>
         <p>SCSS скомпилирован: {$scss_compiled}</p>
+        <p>Данные: {$data}</p>
     </div>
 </main>
 
