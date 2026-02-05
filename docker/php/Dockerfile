@@ -34,6 +34,8 @@ RUN echo "daemon off;" > /etc/nginx/nginx.conf && \
     echo "}" >> /etc/nginx/nginx.conf
 
 WORKDIR /var/www/html
-RUN chmod -R 777 /var/www/html
 
-CMD ["sh", "-c", "php-fpm -D && nginx"]
+CMD ["sh", "-c", "\
+composer install ;\
+chmod -R 777 /var/www/html ;\
+php-fpm -D && nginx"]
