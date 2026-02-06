@@ -1,35 +1,33 @@
 @import "variables";
 
-// Основной контейнер - УБЕРИТЕ height: 100%
 html, body {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: Arial;
+  font-family: Tahoma;
   background: map-get($colors, secondary);
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // Этого достаточно!
+  min-height: 100vh;
 }
 
-// Хедер
 header {
   background: map-get($colors, primary);
   color: white;
   padding: map-get($spacing, medium);
-  text-align: center;
+  text-align: left;
+  padding-left: 10%;
 }
 
-// Основной контент
 main {
   flex: 1;
   padding: map-get($spacing, medium);
   text-align: center;
+  color: #434343;
 }
 
-// Кнопка
 button {
   background: map-get($colors, accent);
   color: white;
@@ -43,10 +41,166 @@ button {
   }
 }
 
-// Футер
 footer {
   background: map-get($colors, primary);
   color: white;
   padding: map-get($spacing, medium);
   text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.category-block {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.category-title {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.category-page-title {
+  font-size: 24px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.articles-page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.article-preview {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.article {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-full {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  width: 80%;
+  margin: 0 auto;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+}
+
+.article-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.article-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.article-image-full img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.article-content {
+  padding: 15px;
+}
+
+.article-content-full {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  border-width: 1px;
+}
+
+.article-title {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.article-excerpt {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.article-excerpt-full {
+  color: #666;
+  font-size: 21px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-weight: 300;
+  font-style: italic;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.article-text {
+  color: #333;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.article-meta {
+  color: #999;
+  font-size: 12px;
+}
+
+.btn-all-articles {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #737373;
+  text-decoration: underline;
+}
+
+.btn-all-articles:hover {
+  color: #555555;
 }

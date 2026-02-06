@@ -1,4 +1,3 @@
 <footer>
-    <p>Футер</p>
-    <p>Версия: {$version}</p>
+    <p>©2026. All rights reserved.</p>
 </footer>
