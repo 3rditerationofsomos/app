@@ -26,4 +26,13 @@
             {$article.view_count} views
         </div>
     </div>
+
+    <h3>
+        You may also like:
+    </h3>
+    <div class="similar-grid">
+        {foreach $article.similar as $similar}
+            {include file="article_preview.tpl" article=$similar}
+        {/foreach}
+    </div>
 </article>

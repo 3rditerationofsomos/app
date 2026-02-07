@@ -39,7 +39,7 @@ function fillArticleTypes(PDO $pdo): void
     $sql = "INSERT INTO article_types (name, description) 
                 VALUES(:name, :description)";
 
-    $dataArr = [
+    $dataList = [
         ['Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'],
         ['Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'],
         ['Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'],
@@ -47,7 +47,7 @@ function fillArticleTypes(PDO $pdo): void
         ['Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.']
     ];
 
-    foreach ($dataArr as $data) {
+    foreach ($dataList as $data) {
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([

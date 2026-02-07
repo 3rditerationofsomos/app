@@ -133,6 +133,14 @@ footer {
   box-sizing: border-box;
 }
 
+.similar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+  gap: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
 .article-link {
   text-decoration: none;
   color: inherit;

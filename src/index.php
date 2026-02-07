@@ -172,8 +172,46 @@ if ($page == 'home_page.tpl') { // Home page
         'description' => $article[0]['description'],
         'text' => $article[0]['text'],
         'created' => $article[0]['created'],
-        'view_count' => $article[0]['view_count']
+        'view_count' => $article[0]['view_count'],
+        'similar' => [],
     ];
+
+    // Preparing similar articles
+    $sql = "
+        SELECT 
+            a.id,
+            a.name,
+            a.image_link,
+            a.description,
+            a.view_count,
+            a.created
+        FROM articles a
+        INNER JOIN relations r ON a.id = r.article_id
+        WHERE a.id != :id AND 
+            r.article_type_id IN (
+                SELECT article_type_id 
+                FROM relations 
+                WHERE article_id = :id
+            )
+        GROUP BY a.id
+        ORDER BY RAND()
+        LIMIT 3;
+    ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    $articleList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($articleList as $article) {
+        $articleFormatted['similar'][] = [
+            'article_id' => $article['id'],
+            'image_link' => $article['image_link'],
+            'article_name' => $article['name'],
+            'article_description' => $article['description'],
+            'created' => $article['created'],
+            'view_count' => $article['view_count']
+        ];
+    }
 
     $smarty->assign('article', $articleFormatted);
 
