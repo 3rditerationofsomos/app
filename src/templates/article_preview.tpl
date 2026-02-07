@@ -1,4 +1,5 @@
 <article class="article-preview">
+
     <a href="/article/{$article.article_id}" class="article-link">
 
         {if $article.image_link}

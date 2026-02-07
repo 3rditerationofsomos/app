@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Gundummy.</title>
+    <title>Lorem ipsum.</title>
     <link href="{$css_path}" rel="stylesheet">
 </head>
 <body>
