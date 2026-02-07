@@ -74,6 +74,18 @@ footer {
   margin-bottom: 20px;
 }
 
+.sort-block  {
+  font-size: 24px;
+  align-items: end;
+  margin: 20px;
+}
+
+.sort-button {
+  text-decoration: underline;
+  color: #6a6a6a;
+  margin: 10px;
+}
+
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

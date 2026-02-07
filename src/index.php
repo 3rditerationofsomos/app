@@ -94,6 +94,13 @@ if ($page == 'home_page.tpl') { // Home page
 
 } elseif ($page == 'category_page.tpl') { // Category page
 
+    // Sorting column
+    if (preg_match('/\/by_views$/', $path)) {
+        $sortColumn = 'view_count';
+    } else {
+        $sortColumn = 'created';
+    }
+
     $sql = "
         SELECT 
             :id AS type_id,
@@ -109,7 +116,7 @@ if ($page == 'home_page.tpl') { // Home page
         JOIN relations r ON a.id = r.article_id
         JOIN article_types at ON at.id = r.article_type_id
         WHERE r.article_type_id = :id
-        ORDER BY a.created DESC";
+        ORDER BY a." . $sortColumn . " DESC";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id' => $id]);
