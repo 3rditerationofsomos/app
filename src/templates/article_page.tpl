@@ -26,6 +26,15 @@
 
                 {$article.view_count} views
             </div>
+
+            <div class="category-list-meta">
+                Категории:
+                {foreach $article.category_list as $category}
+                    <a href="/category/{$category.id}/1/by_date" class="category-list-meta-link">
+                        {$category.name}
+                    </a>
+                {/foreach}
+            </div>
         </div>
 
         <h3>

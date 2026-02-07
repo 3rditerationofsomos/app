@@ -232,6 +232,23 @@ footer {
   margin-bottom: 20px;
 }
 
+.category-list-meta {
+  text-decoration: none;
+  color: #999;
+  font-size: 16px;
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.category-list-meta-link {
+  text-decoration: none;
+  color: #999;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
 .btn-all-articles {
   display: inline-block;
   padding: 10px 20px;

@@ -175,8 +175,27 @@ function getArticlePageData(PDO $pdo, $id): array
             'text' => $article[0]['text'],
             'created' => $article[0]['created'],
             'view_count' => $article[0]['view_count'],
+            'category_list' => [],
             'similar' => [],
         ];
+
+        // Getting category list
+        $sql = "
+            SELECT r.article_type_id as id, at.name 
+            FROM relations r
+            LEFT JOIN article_types at ON r.article_type_id = at.id
+            WHERE r.article_id = :id";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $articleGroupList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($articleGroupList as $articleGroup) {
+            $articleFormatted['category_list'][] = [
+                'id' => $articleGroup['id'],
+                'name' => $articleGroup['name'],
+            ];
+        }
 
         // Preparing similar articles
         $sql = "
