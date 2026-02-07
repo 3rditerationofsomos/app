@@ -64,7 +64,7 @@ function fillArticles(PDO $pdo): void
     // How many articles should be created
     $articleCount = 500;
 
-    // Which images should they use
+    // Which images should be used
     $images = ['img_1.png', 'img_2.png', 'img_3.png', 'img_4.png', 'img_5.png',
         'img_6.png', 'img_7.png', 'img_8.png', 'img_9.png'];
 
@@ -77,7 +77,7 @@ function fillArticles(PDO $pdo): void
                 VALUES(:image_link, :name, :description, :text, :created)";
 
     for ($i = 1; $i <= $articleCount; $i++) {
-        $randomImageLink = '/assets/images/img_' . mt_rand(0, count($images) - 1) . '.png';
+        $randomImageLink = '/assets/images/' . $images[mt_rand(0, count($images) - 1)];
         $randomDate = date("Y-m-d H:i:s", $rangeStartTS + mt_rand(0, $dateRangeTS));
 
         $stmt = $pdo->prepare($sql);
@@ -90,7 +90,16 @@ function fillArticles(PDO $pdo): void
                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
                 ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-                qui officia deserunt mollit anim id est laborum.',
+                qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing 
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum 
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                deserunt mollit anim id est laborum.',
             ':created' => $randomDate
         ]);
     }

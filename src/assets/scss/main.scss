@@ -192,6 +192,11 @@ footer {
 .article-meta {
   color: #999;
   font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-all-articles {
