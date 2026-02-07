@@ -77,9 +77,9 @@ function fillArticles(PDO $pdo): void
                 VALUES(:image_link, :name, :description, :text, :created)";
 
     for ($i = 1; $i <= $articleCount; $i++) {
-        $randomImageLink = '/assets/images/img_' . mt_rand(0, count($images) - 1) . 'png';
+        $randomImageLink = '/assets/images/img_' . mt_rand(0, count($images) - 1) . '.png';
         $randomDate = date("Y-m-d H:i:s", $rangeStartTS + mt_rand(0, $dateRangeTS));
-echo $randomImageLink . '</br>';
+
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':image_link' => $randomImageLink,
