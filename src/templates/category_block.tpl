@@ -3,7 +3,7 @@
         <h2>
             {$category.type_name}
         </h2>
-        <a href="/category/{$category.type_id}" class="btn-all-articles">
+        <a href="/category/{$category.type_id}/1/by_date" class="btn-all-articles">
             View all
         </a>
     </div>

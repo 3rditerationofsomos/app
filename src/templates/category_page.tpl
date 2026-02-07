@@ -9,11 +9,11 @@
     </div>
 
     <div class="sort-block">
-        <a href="/category/{$category.type_id}/by_date" class="sort-button">
+        <a href="/category/{$category.type_id}/{$category.page}/by_date" class="sort-button">
             Sort by date
         </a>
 
-        <a href="/category/{$category.type_id}/by_views" class="sort-button">
+        <a href="/category/{$category.type_id}/{$category.page}/by_views" class="sort-button">
             Sort by views
         </a>
     </div>
@@ -22,5 +22,19 @@
         {foreach $category.articles as $article}
             {include file="article_preview.tpl" article=$article}
         {/foreach}
+    </div>
+
+    <div class="pagination-block">
+        {if $category.page - 1 > 0}
+            <a href="/category/{$category.type_id}/{$category.page - 1}/{$category.sort}" class="arrow-button">
+                ←
+            </a>
+        {/if}
+        {$category.page}
+        {if $category.page + 1 <= $category.page_count}
+            <a href="/category/{$category.type_id}/{$category.page + 1}/{$category.sort}" class="arrow-button">
+                →
+            </a>
+        {/if}
     </div>
 </section>

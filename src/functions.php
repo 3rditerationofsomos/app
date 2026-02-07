@@ -62,14 +62,33 @@ function getHomePageData(PDO $pdo): array
     return $groupedArticles;
 }
 
-function getCategoryPageData(PDO $pdo, $id, $path): array
+function getCategoryPageData(PDO $pdo, $id, $path, $page = 1, $perPage = 21): array
 {
     // Sorting column
     if (preg_match('/\/by_views$/', $path)) {
         $sortColumn = 'view_count';
+        $sort = 'by_views';
     } else {
         $sortColumn = 'created';
+        $sort = 'by_date';
     }
+
+    // Getting page number
+    if (preg_match('/\/category\/\d+\/(\d+)\//', $path, $matches)) {
+        $page = $matches[1];
+    }
+
+    // Calculating total number of pages
+    $countSql = "
+        SELECT COUNT(*) as count
+        FROM articles a
+        JOIN relations r ON a.id = r.article_id
+        WHERE r.article_type_id = :id";
+
+    $countStmt = $pdo->prepare($countSql);
+    $countStmt->execute([':id' => $id]);
+    $result = $countStmt->fetch(PDO::FETCH_ASSOC);
+    $pageCount = (int)ceil($result['count'] / $perPage);
 
     $sql = "
         SELECT 
@@ -86,10 +105,14 @@ function getCategoryPageData(PDO $pdo, $id, $path): array
         JOIN relations r ON a.id = r.article_id
         JOIN article_types at ON at.id = r.article_type_id
         WHERE r.article_type_id = :id
-        ORDER BY a." . $sortColumn . " DESC";
+        ORDER BY a." . $sortColumn . " DESC
+        LIMIT :limit OFFSET :offset";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([':id' => $id]);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', ($page - 1) * $perPage, PDO::PARAM_INT);
+    $stmt->execute();
     $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $groupedArticles = [];
@@ -101,6 +124,9 @@ function getCategoryPageData(PDO $pdo, $id, $path): array
                 'type_id' => $typeId,
                 'type_name' => $article['type_name'],
                 'type_description' => $article['type_description'],
+                'page' => $page,
+                'page_count' => $pageCount,
+                'sort' => $sort,
                 'articles' => []
             ];
         }
