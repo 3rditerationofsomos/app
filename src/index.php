@@ -36,6 +36,7 @@ $pdo = new PDO(
     DB_PASS
 );
 
+// Determine which content page to load
 if ($page == 'home_page.tpl') { // Home page
     $groupedArticles = getHomePageData($pdo);
     $smarty->assign('categories', $groupedArticles);
