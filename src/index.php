@@ -8,7 +8,6 @@ $smarty = new Smarty();
 $smarty->setTemplateDir('templates/');
 
 $smarty->assign('css_path', '/public/css/main.css');
-$smarty->assign('js_path', '/public/js/main.js');
 
 // Assign content template and id
 $url = $_SERVER['REQUEST_URI'];

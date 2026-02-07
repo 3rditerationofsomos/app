@@ -11,8 +11,6 @@ node_modules/
 # Скомпилированные файлы
 src/public/css/*
 !src/public/css/.gitkeep
-src/public/js/*
-!src/public/js/.gitkeep
 
 src/package-lock.json
 src/templates_c

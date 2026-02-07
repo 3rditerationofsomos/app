@@ -14,6 +14,5 @@ define('APP_ENV', 'development');
 // Paths
 define('BASE_PATH', '/');
 define('CSS_PATH', '/public/css/');
-define('JS_PATH', '/public/js/');
 
 ?>
