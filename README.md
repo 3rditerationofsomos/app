@@ -9,4 +9,4 @@
 ### To fill tables open:
 *127.0.0.1:8080/fill.php*
 
-Note that there is some time between build and installing composer, so you might have to wait for about 5-15 seconds before it'll work properly!
+## Note that there is some time between build and installing composer, so you might have to wait for about 5-15 seconds before it'll work properly!
