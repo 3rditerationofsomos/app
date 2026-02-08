@@ -29,7 +29,7 @@ services:
     working_dir: /app
     volumes:
       - ./src:/app
-    command: sh -c "if [ ! -d node_modules ]; then npm install; fi && npm run watch"
+    command: sh -c "if [ ! -d node_modules ]; then npm install; fi && npm run build"
 
 volumes:
   db_data:

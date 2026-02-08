@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "build": "sass assets/scss/main.scss public/css/main.css",
-    "watch": "sass --watch assets/scss:public/css --style compressed"
+    "build": "sass assets/scss/main.scss public/css/main.css"
   },
   "devDependencies": {
     "sass": "^1.66.0"
