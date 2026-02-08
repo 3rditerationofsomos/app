@@ -11,27 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN echo "daemon off;" > /etc/nginx/nginx.conf && \
-    echo "events { worker_connections 1024; }" >> /etc/nginx/nginx.conf && \
-    echo "http {" >> /etc/nginx/nginx.conf && \
-    echo "    include /etc/nginx/mime.types;" >> /etc/nginx/nginx.conf && \
-    echo "    default_type application/octet-stream;" >> /etc/nginx/nginx.conf && \
-    echo "    server {" >> /etc/nginx/nginx.conf && \
-    echo "        listen 80;" >> /etc/nginx/nginx.conf && \
-    echo "        server_name _;" >> /etc/nginx/nginx.conf && \
-    echo "        root /var/www/html;" >> /etc/nginx/nginx.conf && \
-    echo "        index index.php;" >> /etc/nginx/nginx.conf && \
-    echo "        location / {" >> /etc/nginx/nginx.conf && \
-    echo "            try_files \$uri \$uri/ /index.php?\$query_string;" >> /etc/nginx/nginx.conf && \
-    echo "        }" >> /etc/nginx/nginx.conf && \
-    echo "        location ~ \.php\$ {" >> /etc/nginx/nginx.conf && \
-    echo "            try_files \$uri =404;" >> /etc/nginx/nginx.conf && \
-    echo "            fastcgi_pass 127.0.0.1:9000;" >> /etc/nginx/nginx.conf && \
-    echo "            fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;" >> /etc/nginx/nginx.conf && \
-    echo "            include fastcgi_params;" >> /etc/nginx/nginx.conf && \
-    echo "        }" >> /etc/nginx/nginx.conf && \
-    echo "    }" >> /etc/nginx/nginx.conf && \
-    echo "}" >> /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /var/www/html
 
