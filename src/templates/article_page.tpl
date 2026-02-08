@@ -28,7 +28,7 @@
             </div>
 
             <div class="category-list-meta">
-                Категории:
+                Categories:
                 {foreach $article.category_list as $category}
                     <a href="/category/{$category.id}/1/by_date" class="category-list-meta-link">
                         {$category.name}
